@@ -12,11 +12,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class BasicAuthenticationSecurityConfiguration {
 	
 	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
+	public SecurityFilterChain filterChain1(HttpSecurity http) throws Exception {
+        
+
 		http.authorizeHttpRequests(auth->auth
+										.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 										.anyRequest().authenticated()
-										.antMatchers(HttpMethod.OPTIONS,"/**").permitAll() //anables access to preflight request
+ //anables access to preflight request
 									
 									); //enables authentication on evry api call
 		
